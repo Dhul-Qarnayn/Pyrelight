@@ -120,3 +120,29 @@
 	result = /decl/material/liquid/contaminant_cleaner
 	required_reagents = list(/decl/material/solid/sodium = 1, /decl/material/liquid/surfactant = 1)
 	result_amount = 2
+
+/decl/chemical_reaction/compound/lube
+	name = "Lubricant"
+	result = /decl/material/liquid/lube
+	required_reagents = list(/decl/material/liquid/water = 1, /decl/material/solid/silicon = 1, /decl/material/liquid/acetone = 1)
+	result_amount = 3
+	mix_message = "The solution becomes thick and slimy."
+
+/decl/chemical_reaction/compound/pacid
+	name = "Polytrinic acid"
+	result = /decl/material/liquid/acid/polyacid
+	required_reagents = list(/decl/material/liquid/acid = 1, /decl/material/liquid/acid/hydrochloric = 1, /decl/material/solid/potassium = 1)
+	result_amount = 3
+
+/decl/chemical_reaction/compound/sulfuric_acid
+	name = "Oil of Vitriol"
+	result = /decl/material/liquid/acid
+	required_reagents = list(/decl/material/solid/pyrite = 1, /decl/material/solid/sodiumchloride = 2)
+	mix_message = "The solution turns a bright red and gives off harsh fumes."
+	minimum_temperature = 500 CELSIUS
+	result_amount = 3
+
+/decl/chemical_reaction/compound/sulfuric_acid/on_reaction(datum/reagents/holder, created_volume, reaction_flags, list/reaction_data)
+    var/atom/location = holder.get_reaction_loc(chemical_reaction_flags)
+    if(istype(location))
+        location.take_vaporized_reagent(/decl/material/liquid/acid, created_volume * 3)

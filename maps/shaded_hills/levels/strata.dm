@@ -8,6 +8,8 @@
 		/decl/material/solid/graphite,
 		/decl/material/solid/tetrahedrite,
 		/decl/material/solid/hematite
+		/decl/material/solid/pyrite
+		/decl/material/solid/sodiumchloride
 	)
 	ores_rich = list(
 		/decl/material/solid/gemstone/diamond,
